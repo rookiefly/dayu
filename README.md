@@ -7,7 +7,8 @@ dubbo service governance(dubbo服务治理)
 ## 1、环境依赖
 
 - `Java 8+`
-- `MySQL 5.7`
+- `MySQL 5.5+`
+- `Redis 2.8+`
 - `Maven 3.5+`
 - `Apache Dubbo 2.7+`
 
