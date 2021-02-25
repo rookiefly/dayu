@@ -11,5 +11,6 @@ dubbo service governance(dubbo服务治理)
 - `Redis 2.8+`
 - `Maven 3.5+`
 - `Apache Dubbo 2.7+`
+- `Apache Zookeeper 3.4+`
 
 ---
