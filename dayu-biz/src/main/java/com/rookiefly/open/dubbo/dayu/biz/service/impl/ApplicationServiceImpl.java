@@ -6,7 +6,7 @@ import com.rookiefly.open.dubbo.dayu.biz.service.ApplicationService;
 import com.rookiefly.open.dubbo.dayu.common.redis.RedisClientTemplate;
 import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyBean;
 import com.rookiefly.open.dubbo.dayu.common.tools.JsonUtil;
-import com.rookiefly.open.dubbo.dayu.common.tools.Tool;
+import com.rookiefly.open.dubbo.dayu.common.tools.NetTools;
 import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
 import com.rookiefly.open.dubbo.dayu.model.bo.ApplicationBO;
 import com.rookiefly.open.dubbo.dayu.model.bo.HostBO;
@@ -140,7 +140,7 @@ public class ApplicationServiceImpl implements ApplicationService {
             Set<URL> urls = serviceEntry.getValue();
             for (URL url : urls) {
                 //是否被禁止,禁止则不出现
-                if (Tool.compareIsOverride(url, forbidSet)) {
+                if (NetTools.compareIsOverride(url, forbidSet)) {
                     continue;
                 }
                 Set<HostBO> hostList = new HashSet<>();

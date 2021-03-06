@@ -1,0 +1,21 @@
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181
+redis:
+  config:
+    maxIdle: 10
+    maxTotal: 100
+    maxWaitMillis: 10000
+    testOnBorrow: true
+    url: redis://127.0.0.1:6379
+spring:
+  datasource:
+    password: root
+    schema: classpath:sql/schema-h2.sql
+    url: jdbc:h2:mem:dayu;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+  h2:
+    console:
+      enabled: true
+is_online: false
+out_time: 180000

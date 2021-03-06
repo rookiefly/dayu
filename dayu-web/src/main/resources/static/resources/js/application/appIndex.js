@@ -491,7 +491,7 @@ function allAPPRelationForceChart(ec) {
 
         var option = {
             title: {
-                text: '圈越大，与其相关的app越多'
+                text: '圈越大，与其相关的应用越多'
             },
             tooltip: {
                 trigger: 'item',
@@ -506,7 +506,7 @@ function allAPPRelationForceChart(ec) {
                 }
             },
             legend: {
-                data: ['applicationName']
+                data: ['应用名称']
             },
             series: [
                 {
@@ -515,7 +515,7 @@ function allAPPRelationForceChart(ec) {
                     ribbonType: false,
                     categories: [
                         {
-                            name: 'applicationName'
+                            name: '应用名称'
                         }
                     ],
                     itemStyle: {
@@ -673,7 +673,7 @@ function aPPRelationForceChart(appName, type) {
                         }
                     },
                     legend: {
-                        data: ['其他app', '相互调用app']
+                        data: ['其他应用', '相互调用应用']
 
                     },
                     series: [
@@ -683,13 +683,13 @@ function aPPRelationForceChart(appName, type) {
                             ribbonType: false,
                             categories: [
                                 {
-                                    name: '自身app'
+                                    name: '自身应用'
                                 },
                                 {
-                                    name: '其他app'
+                                    name: '其他应用'
                                 },
                                 {
-                                    name: '相互调用app'
+                                    name: '相互调用应用'
                                 }
                             ],
                             itemStyle: {

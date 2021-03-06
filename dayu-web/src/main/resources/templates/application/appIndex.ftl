@@ -94,7 +94,7 @@
                             <div class="input-icon right">
                                 <i class="icon-magnifier"></i>
                                 <input type="text" class="form-control form-control-solid" id="search_app_value"
-                                       placeholder="服务名搜索...">
+                                       placeholder="应用名搜索...">
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                                     <div class="number">
                                         <span style="border-left: 3px solid #F3565D;font-size: 14px;color: #333333;margin-right: 16px;">
                                             &nbsp;&nbsp;&nbsp;
-                                            服务总数:
+                                            应用总数:
                                         </span>
                                         <span id="appSumNumber" style="font-size: 35px;color: #333333;">0</span>
                                         <span class="small_span" style="font-size: 14px;color: #333333;">个</span>
@@ -117,7 +117,7 @@
                             <#--<div class="stat-left">-->
                             <#--<div class="stat-number">-->
                             <#--<div class="title">-->
-                            <#--服务总数-->
+                            <#--应用总数-->
                             <#--</div>-->
                             <#--<div class="number" id="appSumNumber">-->
                             <#--0-->
@@ -153,7 +153,7 @@
                         <table class="table table-hover table-light">
                             <thead>
                             <tr class="uppercase" style="    background-color: #E9ECF3;">
-                                <th>服务名</th>
+                                <th>应用名</th>
                                 <th>角色
                                     <select id="main_category_select">
                                         <option value="-1">不限</option>
@@ -163,12 +163,12 @@
                                     </select>
                                 </th>
                                 </th>
-                                <th>host</th>
+                                <th>主机实例</th>
                                 <th>负责团队</th>
                                 <th>负责人</th>
-                                <th>service</th>
-                                <th>providers</th>
-                                <th>consumers</th>
+                                <th>服务数</th>
+                                <th>提供者</th>
+                                <th>消费者</th>
                             </tr>
                             </thead>
                             <tbody id="main_application_tbody">
@@ -183,14 +183,14 @@
 </section>
 
 
-<#--所有app的依赖关系-->
+<#--所有应用的依赖关系-->
 <section>
     <div class="row">
         <div class="col-md-12">
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
-                        所有服务间的依赖关系
+                        所有应用间的依赖关系
                     </div>
                     <div class="tools">
                         <a href="" class="collapse" data-original-title="" title="">
@@ -218,7 +218,7 @@
     <div class="portlet light">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-gift"></i><span id="services_app_span"></span> 提供的Services
+                <i class="fa fa-gift"></i><span id="services_app_span"></span> 提供的服务列表
             </div>
             <div class="tools">
                 <a href="javascript:" class="collapse" data-original-title="" title="">
@@ -231,7 +231,7 @@
                     <div class="input-icon right">
                         <i class="icon-magnifier"></i>
                         <input type="text" class="form-control form-control-solid" id="search_service_value"
-                               placeholder="service名搜索...">
+                               placeholder="服务接口名搜索...">
                     </div>
                 </div>
             </div>

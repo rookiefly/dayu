@@ -3,7 +3,7 @@ package com.rookiefly.open.dubbo.dayu.biz.service.impl;
 import com.rookiefly.open.dubbo.dayu.biz.service.AppChangeService;
 import com.rookiefly.open.dubbo.dayu.biz.service.RegistryContainer;
 import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
-import com.rookiefly.open.dubbo.dayu.common.tools.Tool;
+import com.rookiefly.open.dubbo.dayu.common.tools.NetTools;
 import com.rookiefly.open.dubbo.dayu.model.bo.ApplicationChangeBO;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.constants.CommonConstants;
@@ -335,9 +335,9 @@ public class RegistryContainerImpl implements RegistryContainer {
                 String urlService = url.getServiceInterface();
                 for (Map.Entry<String, Set<URL>> serviceEntry : services.entrySet()) {
                     String service = serviceEntry.getKey();
-                    if (Tool.getInterface(service).equals(urlService)
-                            && (CommonConstants.ANY_VALUE.equals(group) || StringUtils.isEquals(group, Tool.getGroup(service)))
-                            && (CommonConstants.ANY_VALUE.equals(version) || StringUtils.isEquals(version, Tool.getVersion(service)))) {
+                    if (NetTools.getInterface(service).equals(urlService)
+                            && (CommonConstants.ANY_VALUE.equals(group) || StringUtils.isEquals(group, NetTools.getGroup(service)))
+                            && (CommonConstants.ANY_VALUE.equals(version) || StringUtils.isEquals(version, NetTools.getVersion(service)))) {
 
                         Set<URL> urlSet = serviceEntry.getValue();
                         for (URL removeUrl : urlSet) {

@@ -559,7 +559,7 @@ function allAPPRelationForceChart(ec) {
                         }
                     },
                     legend: {
-                        data: ['applicationName']
+                        data: ['应用名称']
                     },
                     series: [
                         {
@@ -568,7 +568,7 @@ function allAPPRelationForceChart(ec) {
                             ribbonType: false,
                             categories: [
                                 {
-                                    name: 'applicationName'
+                                    name: '应用名称'
                                 }
                             ],
                             itemStyle: {

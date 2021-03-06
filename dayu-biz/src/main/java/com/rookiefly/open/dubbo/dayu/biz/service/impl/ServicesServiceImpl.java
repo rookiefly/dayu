@@ -4,7 +4,7 @@ import com.rookiefly.open.dubbo.dayu.biz.service.DubboMonitorService;
 import com.rookiefly.open.dubbo.dayu.biz.service.RegistryContainer;
 import com.rookiefly.open.dubbo.dayu.biz.service.ServicesService;
 import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
-import com.rookiefly.open.dubbo.dayu.common.tools.Tool;
+import com.rookiefly.open.dubbo.dayu.common.tools.NetTools;
 import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
 import com.rookiefly.open.dubbo.dayu.model.bo.HostBO;
 import com.rookiefly.open.dubbo.dayu.model.bo.ServiceBO;
@@ -141,7 +141,7 @@ public class ServicesServiceImpl implements ServicesService {
                 //是否被禁止,禁止则不出现
                 Set<URL> forbidSet = forbidServices.get(url.getServiceInterface());
                 if (null != forbidSet && !forbidSet.isEmpty()) {
-                    if (Tool.compareIsOverride(url, forbidSet)) {
+                    if (NetTools.compareIsOverride(url, forbidSet)) {
                         continue;
                     }
                 }

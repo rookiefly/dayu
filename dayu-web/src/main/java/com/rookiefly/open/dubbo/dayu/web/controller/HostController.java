@@ -23,7 +23,7 @@ public class HostController {
     @Resource
     private HostService hostService;
 
-    @RequestMapping(value = "main")
+    @RequestMapping(value = "main", method = RequestMethod.GET)
     public ModelAndView main() {
         return new ModelAndView("/host/hostIndex");
     }

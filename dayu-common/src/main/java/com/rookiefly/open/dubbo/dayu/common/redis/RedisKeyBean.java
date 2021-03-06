@@ -3,7 +3,6 @@ package com.rookiefly.open.dubbo.dayu.common.redis;
 /**
  * redis key 的管理
  */
-
 public interface RedisKeyBean {
     /**
      * redis变量key的系统前缀

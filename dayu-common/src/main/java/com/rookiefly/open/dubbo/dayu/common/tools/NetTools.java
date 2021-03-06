@@ -10,12 +10,7 @@ import java.net.URLEncoder;
 import java.net.UnknownHostException;
 import java.util.Set;
 
-/**
- * Tool
- *
- * @author william.liangf
- */
-public class Tool {
+public class NetTools {
 
     public static String getInterface(String service) {
         if (service != null && service.length() > 0) {

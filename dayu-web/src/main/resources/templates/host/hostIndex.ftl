@@ -86,7 +86,7 @@
                             <div class="input-icon right">
                                 <i class="icon-magnifier"></i>
                                 <input type="text" class="form-control form-control-solid" id="search_host_value"
-                                       placeholder="ip search...">
+                                       placeholder="IP搜索...">
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                             <div class="stat-center">
                                 <div class="stat-number">
                                     <div class="title">
-                                        Host Number
+                                        主机实例数
                                     </div>
                                     <div class="number" id="hostSumNumber">
                                         0
@@ -123,20 +123,21 @@
                                 <th>映射ip</th>
                                 <th>服务器</th>
                                 <th>
-                                    Status
+                                    角色
                                     <select id="main_category_select">
                                         <option value="-1">不限</option>
-                                        <option value="providers">提供者</option>
-                                        <option value="consumers">消费者</option>
+                                        <option value="all">二者均有</option>
+                                        <option value="providers">仅提供者</option>
+                                        <option value="consumers">仅消费者</option>
                                     </select>
                                 </th>
                                 <th>
-                                    Providers
+                                    提供者
                                     <input type="text" id="providers_search">
 
                                 </th>
                                 <th>
-                                    Consumers
+                                    消费者
                                     <input type="text" id="consumers_search">
                                 </th>
                             </tr>

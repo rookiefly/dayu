@@ -86,7 +86,6 @@ public class TimeUtil {
         return null;
     }
 
-
     // date 的 后n天,若为负数 则为前n天
     public static String getBeforDateByNumber(Date date, Integer amount) {
         Calendar calendar = Calendar.getInstance();
@@ -160,6 +159,4 @@ public class TimeUtil {
 
         return false;
     }
-
-
 }

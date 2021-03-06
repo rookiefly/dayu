@@ -223,7 +223,7 @@ function serviceTable(search_value) {
     // 滚动到指定位置
     var scroll_offset;
     if ("" == search_value) {
-        var html = Mustache.render($('#alert_danger_template').html(), {'msg': "若无输入搜索词，将展示所有service！！"});
+        var html = Mustache.render($('#alert_danger_template').html(), {'msg': "若无输入搜索词，将展示所有服务接口！！"});
         $("#search_result_section").prepend(html);
         scroll_offset = $("#search_result_section").offset();
     } else {
@@ -520,7 +520,7 @@ function servicesRelationForceChart(usedApp) {
             }
         },
         legend: {
-            data: ['applicationName']
+            data: ['应用名称']
         },
         series: [
             {
@@ -529,10 +529,10 @@ function servicesRelationForceChart(usedApp) {
                 ribbonType: false,
                 categories: [
                     {
-                        name: '自身service'
+                        name: '自身应用'
                     },
                     {
-                        name: 'applicationName'
+                        name: '应用名称'
                     }
                 ],
                 itemStyle: {

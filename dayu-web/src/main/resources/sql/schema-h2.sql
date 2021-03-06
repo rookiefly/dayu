@@ -1,5 +1,4 @@
-SET
-MODE MySQL; -- for h2 test
+SET MODE MySQL; -- for h2 test
 
 CREATE TABLE `dubbo_invoke`
 (

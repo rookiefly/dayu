@@ -41,7 +41,7 @@ public class IndexController {
     @Resource
     private AppChangeService appChangeService;
 
-    @RequestMapping(value = "main")
+    @RequestMapping(value = "main", method = RequestMethod.GET)
     public ModelAndView main(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String name = (String) session.getAttribute(MonitorConstants.SESSION_USER_NAME);
@@ -54,7 +54,7 @@ public class IndexController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "index")
+    @RequestMapping(value = "index", method = RequestMethod.GET)
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("/dashboard/dashboard");
 

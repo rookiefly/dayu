@@ -135,7 +135,7 @@
 
     <div class="tabbable-custom ">
         <ul class="nav nav-tabs ">
-            <li class="active"><a href="#tab_app_relation" data-toggle="tab" id="tab_app_relation_btn">服务对应关系</a></li>
+            <li class="active"><a href="#tab_app_relation" data-toggle="tab" id="tab_app_relation_btn">应用对应关系</a></li>
             <li class=""><a href="#tab_app_data" data-toggle="tab" id="tab_app_data_btn">服务数据图表</a></li>
             <li class=""><a href="#tab_app_ranking" data-toggle="tab" id="tab_app_ranking_btn">服务排行榜单</a></li>
         </ul>

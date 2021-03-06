@@ -37,7 +37,7 @@ public class ServicesController {
     @Resource
     private HostService hostService;
 
-    @RequestMapping(value = "main")
+    @RequestMapping(value = "main", method = RequestMethod.GET)
     public ModelAndView main() {
         return new ModelAndView("/services/servicesIndex");
     }

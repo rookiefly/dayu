@@ -42,7 +42,7 @@ public class ApplicationController {
     /**
      * 主页
      */
-    @RequestMapping(value = "main")
+    @RequestMapping(value = "main", method = RequestMethod.GET)
     public ModelAndView main() {
         return new ModelAndView("/application/appIndex");
     }

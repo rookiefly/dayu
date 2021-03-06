@@ -157,7 +157,7 @@
                 <div class="col-lg-2 col-md-1"></div>
                 <div class="col-lg-8 col-md-10 col-xs-12">
                     <div class="input-group">
-                        <input type="text" class="form-control" value="" placeholder="service名称" id="search_value">
+                        <input type="text" class="form-control" value="" placeholder="服务接口名称" id="search_value">
                         <span class="input-group-btn">
                             <button class="btn bg-blue-madison" type="button" id="search_btn">
                                 <i class="icon-magnifier"></i>
@@ -252,7 +252,7 @@
                             <div class="stat-center">
                                 <div class="stat-number">
                                     <div class="title">
-                                        Service Number
+                                        服务数
                                     </div>
                                     <div class="number" id="appSumNumber">
                                         0
@@ -266,15 +266,15 @@
                         <table class="table table-hover table-light">
                             <thead>
                             <tr class="uppercase">
-                                <th>Service
+                                <th>服务名
                                 </th>
-                                <th>Status</th>
+                                <th>状态</th>
                                 <th>
                                     所属应用
                                 </th>
                                 <th>负责团队</th>
                                 <th>负责人</th>
-                                <th>Consumers</th>
+                                <th>消费者</th>
                                 <th>最后消费时间</th>
                             </tr>
                             </thead>

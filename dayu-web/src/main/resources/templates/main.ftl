@@ -154,19 +154,19 @@
                 <li class="gotoIfreame" id="appListButton">
                     <a href="#" data-url="/monitor/application/main">
                         <i class="icon-grid"></i>
-                        <span class="title">Application-应用管理</span>
+                        <span class="title">应用管理</span>
                     </a>
                 </li>
                 <li class="gotoIfreame" id="serviceButton">
                     <a href="#" data-url="/monitor/services/main">
                         <i class="icon-calendar"></i>
-                        <span class="title">Service-服务管理</span>
+                        <span class="title">服务接口管理</span>
                     </a>
                 </li>
                 <li class="gotoIfreame" id="hostButton">
                     <a href="#" data-url="/monitor/hosts/main">
                         <i class="icon-list"></i>
-                        <span class="title">Hosts-主机管理</span>
+                        <span class="title">主机实例管理</span>
                     </a>
                 </li>
 
@@ -185,7 +185,7 @@
 <!-- END CONTAINER -->
 <div class="page-footer">
     <div class="page-footer-inner">
-        2015 © 杭州 by 中西.
+        2021 © rookiefly
     </div>
     <div class="scroll-to-top" style="">
         <i class="icon-arrow-up"></i>

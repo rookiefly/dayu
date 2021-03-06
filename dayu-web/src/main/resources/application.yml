@@ -1,0 +1,24 @@
+dubbo:
+  application:
+    name: ${spring.application.name}
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: com.rookiefly.open.dubbo.dayu.biz.dubbo.service
+logging:
+  level:
+    root: info
+mybatis:
+  type-aliases-package: com.rookiefly.open.dubbo.dayu.model.entity
+  mapper-locations: classpath:mapper/*.xml
+server:
+  port: 8080
+spring:
+  application:
+    name: dayu
+  freemarker:
+    cache: true
+    suffix: .ftl
+  profiles:
+    active: dev

@@ -173,7 +173,7 @@
 <div class="page-head">
     <div class="page-title" style="color: #333333">
         <h1>首页
-            <small>本系统数据均采集同一zk的dubbo项目</small>
+            <small>本系统数据均采集同一zookeeper注册中心的dubbo应用</small>
         </h1>
     </div>
 </div>
@@ -189,7 +189,7 @@
                     </div>
                     <div class="col-md-8 show_name">
                         Application
-                        <span class="show_help">dubbo服务的主服务</span>
+                        <span class="show_help">dubbo服务的应用数</span>
                     </div>
                 </div>
             </div>
@@ -209,7 +209,7 @@
                     </div>
                     <div class="col-md-8 show_name">
                         Service
-                        <span class="show_help">提供出的Service类</span>
+                        <span class="show_help">dubbo服务的接口数</span>
                     </div>
                 </div>
             </div>
@@ -239,7 +239,7 @@
                     </div>
                     <div class="col-md-8 show_name">
                         Host
-                        <span class="show_help">所有运行的主机</span>
+                        <span class="show_help">dubbo服务的实例数</span>
                     </div>
                 </div>
             </div>
@@ -254,15 +254,15 @@
 
 </div>
 
-<#--所有app的依赖关系-->
+<#--所有应用的依赖关系-->
 <section>
     <div class="row">
         <div class="col-md-12">
             <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject  bold uppercase">所有服务间的依赖关系</span>
-                        <span class="caption-helper">圈越大，与其相关的app越多</span>
+                        <span class="caption-subject  bold uppercase">所有应用间的依赖关系</span>
+                        <span class="caption-helper">圈越大，与其相关的应用越多</span>
 
                     </div>
                     <div class="tools">

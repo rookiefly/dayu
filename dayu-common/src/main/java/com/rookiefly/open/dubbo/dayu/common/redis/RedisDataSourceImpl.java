@@ -1,6 +1,6 @@
 package com.rookiefly.open.dubbo.dayu.common.redis;
 
-import com.rookiefly.open.dubbo.dayu.common.tools.SpringContextsUtil;
+import com.rookiefly.open.dubbo.dayu.common.tools.SpringContextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class RedisDataSourceImpl implements RedisDataSource {
     public ShardedJedis getRedisClient() {
         try {
             if (null == shardedJedisPool) {
-                shardedJedisPool = (ShardedJedisPool) SpringContextsUtil.getBean("shardedJedisPool");
+                shardedJedisPool = (ShardedJedisPool) SpringContextUtil.getBean("shardedJedisPool");
             }
             ShardedJedis shardJedis = shardedJedisPool.getResource();
             return shardJedis;
