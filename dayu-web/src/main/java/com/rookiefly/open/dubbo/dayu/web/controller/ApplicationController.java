@@ -1,14 +1,14 @@
 package com.rookiefly.open.dubbo.dayu.web.controller;
 
-import com.rookiefly.open.dubbo.dayu.biz.service.InvokeService;
 import com.rookiefly.open.dubbo.dayu.biz.service.ApplicationService;
+import com.rookiefly.open.dubbo.dayu.biz.service.InvokeService;
+import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
 import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
 import com.rookiefly.open.dubbo.dayu.dao.redis.manager.InvokeReportManager;
-import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
-import com.rookiefly.open.dubbo.dayu.model.vo.ResultVO;
 import com.rookiefly.open.dubbo.dayu.model.bo.ApplicationBO;
 import com.rookiefly.open.dubbo.dayu.model.bo.MethodRankBO;
 import com.rookiefly.open.dubbo.dayu.model.bo.ServiceBO;
+import com.rookiefly.open.dubbo.dayu.model.vo.ResultVO;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -97,7 +96,7 @@ public class ApplicationController {
             }
 
             //对appList 排序，按首字母
-            Collections.sort(appList, (o1, o2) -> {
+            appList.sort((o1, o2) -> {
                 Integer o1First = o1.getApplicationName().codePointAt(0);
                 Integer o2First = o2.getApplicationName().codePointAt(0);
                 return o1First.compareTo(o2First);
@@ -331,7 +330,7 @@ public class ApplicationController {
     }
 
     private List<String> getRecentDay(String type) {
-        Integer limit = 0;
+        int limit = 0;
         Date date = new Date(System.currentTimeMillis());
 
         List<String> recentDateList = new ArrayList<>();
@@ -352,7 +351,7 @@ public class ApplicationController {
                 default:
                     break;
             }
-            for (Integer amount = -limit; amount < 0; amount++) {
+            for (int amount = -limit; amount < 0; amount++) {
                 recentDateList.add(TimeUtil.getBeforDateByNumber(date, amount));
             }
         }

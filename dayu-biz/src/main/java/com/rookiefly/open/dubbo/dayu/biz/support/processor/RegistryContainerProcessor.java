@@ -31,6 +31,5 @@ public class RegistryContainerProcessor implements ApplicationListener<ContextRe
             log.info("=====initRedisChangeAppCaChe]");
             registryContainer.initRedisChangeAppCaChe();
         }
-
     }
 }

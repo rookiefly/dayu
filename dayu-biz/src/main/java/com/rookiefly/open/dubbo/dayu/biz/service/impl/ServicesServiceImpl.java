@@ -3,9 +3,9 @@ package com.rookiefly.open.dubbo.dayu.biz.service.impl;
 import com.rookiefly.open.dubbo.dayu.biz.service.DubboMonitorService;
 import com.rookiefly.open.dubbo.dayu.biz.service.RegistryContainer;
 import com.rookiefly.open.dubbo.dayu.biz.service.ServicesService;
-import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
-import com.rookiefly.open.dubbo.dayu.common.tools.NetTools;
 import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
+import com.rookiefly.open.dubbo.dayu.common.tools.NetTools;
+import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
 import com.rookiefly.open.dubbo.dayu.model.bo.HostBO;
 import com.rookiefly.open.dubbo.dayu.model.bo.ServiceBO;
 import org.apache.dubbo.common.URL;
@@ -27,7 +27,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class ServicesServiceImpl implements ServicesService {
-
 
     @Resource
     private RegistryContainer registryContainer;
@@ -54,17 +53,17 @@ public class ServicesServiceImpl implements ServicesService {
 
     @Override
     public Map<String, Set<String>> getServiceProviders() {
-        Map<String, Set<String>> ServiceProviders = new ConcurrentHashMap<>();
+        Map<String, Set<String>> serviceProviders = new ConcurrentHashMap<>();
 
         Map<String, Map<String, Set<URL>>> registry = registryContainer.getRegistryCache();
         Map<String, Set<URL>> providerServices = registry.get(RegistryConstants.PROVIDERS_CATEGORY);
 
         for (Map.Entry<String, Set<URL>> serviceEntry : providerServices.entrySet()) {
             String service = serviceEntry.getKey();
-            Set<String> applications = ServiceProviders.get(service);
+            Set<String> applications = serviceProviders.get(service);
             if (null == applications) {
                 applications = new ConcurrentHashSet<>();
-                ServiceProviders.put(service, applications);
+                serviceProviders.put(service, applications);
             }
             Set<URL> urls = serviceEntry.getValue();
             for (URL url : urls) {
@@ -74,22 +73,22 @@ public class ServicesServiceImpl implements ServicesService {
                 }
             }
         }
-        return ServiceProviders;
+        return serviceProviders;
     }
 
     @Override
     public Map<String, Set<String>> getServiceConsumers() {
-        Map<String, Set<String>> ServiceConsumers = new ConcurrentHashMap<>();
+        Map<String, Set<String>> serviceConsumers = new ConcurrentHashMap<>();
 
         Map<String, Map<String, Set<URL>>> registry = registryContainer.getRegistryCache();
         Map<String, Set<URL>> consumeServices = registry.get(RegistryConstants.CONSUMERS_CATEGORY);
 
         for (Map.Entry<String, Set<URL>> serviceEntry : consumeServices.entrySet()) {
             String service = serviceEntry.getKey();
-            Set<String> applications = ServiceConsumers.get(service);
+            Set<String> applications = serviceConsumers.get(service);
             if (null == applications) {
                 applications = new ConcurrentHashSet<>();
-                ServiceConsumers.put(service, applications);
+                serviceConsumers.put(service, applications);
             }
             Set<URL> urls = serviceEntry.getValue();
             for (URL url : urls) {
@@ -99,7 +98,7 @@ public class ServicesServiceImpl implements ServicesService {
                 }
             }
         }
-        return ServiceConsumers;
+        return serviceConsumers;
     }
 
     @Override
@@ -114,13 +113,13 @@ public class ServicesServiceImpl implements ServicesService {
 
         //测试环境url
         Set<String> testUrlSet = new HashSet<>();
-        for (Map.Entry<String, String> entry : MonitorConstants.ecsTestMap.entrySet()) {
+        for (Map.Entry<String, String> entry : MonitorConstants.ECS_TEST_MAP.entrySet()) {
             testUrlSet.add(entry.getKey());
             testUrlSet.add(entry.getValue());
         }
         //所有服务器url,除测试环境外
         Set<String> onlineUrlSet = new HashSet<>();
-        for (Map.Entry<String, String> entry : MonitorConstants.ecsMap.entrySet()) {
+        for (Map.Entry<String, String> entry : MonitorConstants.ECS_MAP.entrySet()) {
             String url = entry.getKey();
             if (!testUrlSet.contains(url)) {
                 onlineUrlSet.add(url);
@@ -156,7 +155,7 @@ public class ServicesServiceImpl implements ServicesService {
                 }
 
                 //method set
-                ServiceBOSetMethods(serviceBO, url);
+                serviceBOSetMethods(serviceBO, url);
                 //owner app set
                 Set<String> ownerApp = serviceBO.getOwnerApp();
                 if (null == ownerApp) {
@@ -219,12 +218,9 @@ public class ServicesServiceImpl implements ServicesService {
         return serviceBOMap;
     }
 
-
     // 保存method，若method不一致，则保存多条----保存methods所在的host
-    private void ServiceBOSetMethods(ServiceBO serviceBO, URL url) {
-
+    private void serviceBOSetMethods(ServiceBO serviceBO, URL url) {
         String methods = url.getParameter(CommonConstants.METHODS_KEY);
-
 
         Set<String> methodSet = serviceBO.getMethods();
         if (null == methodSet) {
@@ -254,7 +250,6 @@ public class ServicesServiceImpl implements ServicesService {
                 methods = oldMethods;
             }
         }
-
 
         // 添加host 到同一个method上
         Map<String, Set<HostBO>> methodsHost = serviceBO.getMethodsHost();

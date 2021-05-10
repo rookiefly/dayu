@@ -21,9 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class AppChangeRedisManagerImpl implements AppChangeRedisManager {
 
-    private static Boolean recentDeleteNumOk = false;
+    private Boolean recentDeleteNumOk = false;
 
-    private static Boolean recentInsertNumOk = false;
+    private Boolean recentInsertNumOk = false;
 
     /**
      * 保存过的日期
@@ -33,7 +33,7 @@ public class AppChangeRedisManagerImpl implements AppChangeRedisManager {
     /**
      * 最近常用保持30条记录
      */
-    private final static Integer RECENT_NUM = 30;
+    private static final Integer RECENT_NUM = 30;
 
     @Resource
     private RedisClientTemplate redisClientTemplate;

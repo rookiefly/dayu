@@ -1,7 +1,7 @@
 package com.rookiefly.open.dubbo.dayu.biz.service.impl;
 
-import com.rookiefly.open.dubbo.dayu.biz.support.processor.NotifyAppChangeProcessor;
 import com.rookiefly.open.dubbo.dayu.biz.service.AppChangeService;
+import com.rookiefly.open.dubbo.dayu.biz.support.processor.NotifyAppChangeProcessor;
 import com.rookiefly.open.dubbo.dayu.common.tools.BdUtil;
 import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
 import com.rookiefly.open.dubbo.dayu.dao.redis.manager.AppChangeRedisManager;
@@ -23,6 +23,7 @@ public class AppChangeServiceImpl implements AppChangeService {
 
     @Resource
     private AppChangeRedisManager appChangeRedisManager;
+
     @Resource
     private NotifyAppChangeProcessor notifyAppChangeProcessor;
 
@@ -62,7 +63,6 @@ public class AppChangeServiceImpl implements AppChangeService {
         insertBO.setTime(thisTime);
         insertBO.setDoType("delete");
 
-
         appChangeRedisManager.addDeleteRecentRecord(insertBO);
         //应用停止服务后的处理
         notifyAppChangeProcessor.stopApp(insertBO);
@@ -78,7 +78,6 @@ public class AppChangeServiceImpl implements AppChangeService {
         ApplicationChangeBO insertBO = new ApplicationChangeBO(applicationChangeBO.getHost(), applicationChangeBO.getPort(), applicationChangeBO.getAppName(), applicationChangeBO.getCategory(), applicationChangeBO.getOrganization());
         insertBO.setTime(thisTime);
         insertBO.setDoType("insert");
-
 
         appChangeRedisManager.addInsertRecentRecord(insertBO);
         //应用启动服务后的处理

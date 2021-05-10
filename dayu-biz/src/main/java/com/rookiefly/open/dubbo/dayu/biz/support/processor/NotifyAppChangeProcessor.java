@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class NotifyAppChangeProcessor {
 
-
     public void stopApp(ApplicationChangeBO applicationChangeBO) {
         //todo
     }

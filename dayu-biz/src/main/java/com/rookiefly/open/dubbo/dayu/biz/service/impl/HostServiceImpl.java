@@ -42,7 +42,7 @@ public class HostServiceImpl implements HostService {
 
     @Override
     public Set<String> getAppNameByHost(HostBO hostBO) {
-        Set<String> AppNameSet = new HashSet<>();
+        Set<String> appNameSet = new HashSet<>();
 
         String port = hostBO.getPort();
         String host = hostBO.getHost();
@@ -59,7 +59,7 @@ public class HostServiceImpl implements HostService {
                 if (urlHost.equals(host)) {
                     if (port == null || port.equals(urlPort)) {
                         String application = url.getParameter(CommonConstants.APPLICATION_KEY);
-                        AppNameSet.add(application);
+                        appNameSet.add(application);
                     }
                 }
             }
@@ -72,12 +72,12 @@ public class HostServiceImpl implements HostService {
                     String urlHost = url.getHost();
                     if (urlHost.equals(host)) {
                         String application = url.getParameter(CommonConstants.APPLICATION_KEY);
-                        AppNameSet.add(application);
+                        appNameSet.add(application);
                     }
                 }
             }
         }
-        return AppNameSet;
+        return appNameSet;
     }
 
     @Override
@@ -145,14 +145,14 @@ public class HostServiceImpl implements HostService {
                 HostBO hostBO = resultMap.get(host);
                 if (null == hostBO) {
                     hostBO = new HostBO(host, port);
-                    String hostName = MonitorConstants.ecsMap.get(host);
-                    String anotherIp = MonitorConstants.ecsBiMap.get(host);
+                    String hostName = MonitorConstants.ECS_MAP.get(host);
+                    String anotherIp = MonitorConstants.ECS_BI_MAP.get(host);
                     if (null == hostName) {
                         hostName = "未知设备";
                         anotherIp = "";
                     } else {
                         if (anotherIp == null) {
-                            anotherIp = MonitorConstants.ecsBiMap.inverse().get(host);
+                            anotherIp = MonitorConstants.ECS_BI_MAP.inverse().get(host);
                         }
                     }
                     hostBO.setHostName(hostName);
@@ -179,8 +179,8 @@ public class HostServiceImpl implements HostService {
                 HostBO hostBO = resultMap.get(host);
                 if (null == hostBO) {
                     hostBO = new HostBO(host, null);
-                    String hostName = MonitorConstants.ecsMap.get(host);
-                    String anotherIp = MonitorConstants.ecsBiMap.get(host);
+                    String hostName = MonitorConstants.ECS_MAP.get(host);
+                    String anotherIp = MonitorConstants.ECS_BI_MAP.get(host);
                     if (null == hostName) {
                         hostName = "未知设备";
                         anotherIp = "";

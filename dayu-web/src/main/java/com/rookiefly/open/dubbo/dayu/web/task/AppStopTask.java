@@ -1,9 +1,9 @@
 package com.rookiefly.open.dubbo.dayu.web.task;
 
+import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
 import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
 import com.rookiefly.open.dubbo.dayu.dao.redis.manager.AppStopRedisManager;
 import com.rookiefly.open.dubbo.dayu.dao.redis.manager.ApplicationBaseRedisManager;
-import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
 import com.rookiefly.open.dubbo.dayu.model.bo.ApplicationChangeBO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +26,7 @@ public class AppStopTask {
      * 是否是线上
      */
     @Value(value = "${is_online}")
-    private String is_online;
+    private String isOnline;
 
     /**
      * 超时时间
@@ -44,7 +44,7 @@ public class AppStopTask {
      */
     @Scheduled(cron = "0 * * * * ?")
     public void smsStopApp() {
-        Boolean online = Boolean.parseBoolean(is_online);
+        boolean online = Boolean.parseBoolean(isOnline);
         if (online) {
             Date now = new Date();
 
@@ -52,14 +52,14 @@ public class AppStopTask {
                 String value = applicationChangeBOStringEntry.getValue();
                 String[] valueArray = value.split(",");
                 String oldTime = valueArray[0];
-                Integer num = Integer.valueOf(valueArray[1]);
+                int num = Integer.parseInt(valueArray[1]);
 
                 Date stopDate = TimeUtil.getDateByTimeString(oldTime);
                 if (null != stopDate) {
-                    Long diff = now.getTime() - stopDate.getTime();
+                    long diff = now.getTime() - stopDate.getTime();
 
-                    Integer addNum = num * (10 * 60 * 1000);
-                    Long out = Long.parseLong(outTime) + Long.parseLong(addNum.toString());
+                    int addNum = num * (10 * 60 * 1000);
+                    long out = Long.parseLong(outTime) + Long.parseLong(Integer.toString(addNum));
                     if (diff >= out) {
                         senStopMessageTo(applicationChangeBOStringEntry.getKey(), diff, oldTime, num);
                     }
@@ -91,8 +91,8 @@ public class AppStopTask {
         map.put("host", applicationChangeBO.getHostString());
 
         String host = applicationChangeBO.getHost();
-        if (MonitorConstants.ecsMap.containsKey(host)) {
-            map.put("server", MonitorConstants.ecsMap.get(host));
+        if (MonitorConstants.ECS_MAP.containsKey(host)) {
+            map.put("server", MonitorConstants.ECS_MAP.get(host));
 
             try {
 //                smsServiceHelp.sendMsg(mobile, MonitorConstants.SMS_STOP_ACTION, map);

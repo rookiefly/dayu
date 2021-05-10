@@ -97,8 +97,7 @@ public class RegistryContainerImpl implements RegistryContainer {
 
     @Override
     public Date getFinalUpdateTime() {
-        Date now = (Date) finalDataMap.get(NOW_TIME_KEY);
-        return now;
+        return (Date) finalDataMap.get(NOW_TIME_KEY);
     }
 
     /**
@@ -162,7 +161,7 @@ public class RegistryContainerImpl implements RegistryContainer {
 
         // 订阅符合条件的已注册数据，当有注册数据变更时自动推送.
         registry.subscribe(subscribeUrl, urls -> {
-            if (urls == null || urls.size() == 0) {
+            if (urls.isEmpty()) {
                 return;
             }
 
@@ -238,6 +237,7 @@ public class RegistryContainerImpl implements RegistryContainer {
     @Override
     @PreDestroy
     public void stop() {
+        // Do nothing
     }
 
     /**
@@ -254,11 +254,11 @@ public class RegistryContainerImpl implements RegistryContainer {
                 services = new ConcurrentHashMap<>();
                 registryCache.put(category, services);
             }
-            Map<String, Set<URL>> NewServices = categoryEntry.getValue();
-            if (compareOldAndNewServices(services, NewServices)) {
+            Map<String, Set<URL>> newServices = categoryEntry.getValue();
+            if (compareOldAndNewServices(services, newServices)) {
                 appCacheChange = true;
             }
-            services.putAll(NewServices);
+            services.putAll(newServices);
         }
         //初始化完成方可对比处理数据
         Boolean startMonitor = (Boolean) finalDataMap.get(IS_START_MONITOR);

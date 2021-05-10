@@ -26,7 +26,6 @@ public interface AppChangeService {
     /*按月份获得实际日期*/
     Set<String> getDaySet(String month);
 
-
     /*===========================app新增或停止触发的操作======================*/
     /*服务停止后的操作*/
     void afterChangeDeleteDo(ApplicationChangeBO applicationChangeBO);

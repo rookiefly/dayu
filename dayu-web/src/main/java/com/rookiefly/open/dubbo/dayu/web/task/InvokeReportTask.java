@@ -1,12 +1,12 @@
 package com.rookiefly.open.dubbo.dayu.web.task;
 
-import com.rookiefly.open.dubbo.dayu.biz.service.InvokeService;
 import com.rookiefly.open.dubbo.dayu.biz.service.ApplicationService;
 import com.rookiefly.open.dubbo.dayu.biz.service.HostService;
+import com.rookiefly.open.dubbo.dayu.biz.service.InvokeService;
+import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
 import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
 import com.rookiefly.open.dubbo.dayu.dao.redis.manager.InvokeRedisManager;
 import com.rookiefly.open.dubbo.dayu.dao.redis.manager.InvokeReportManager;
-import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
 import com.rookiefly.open.dubbo.dayu.model.bo.HostBO;
 import com.rookiefly.open.dubbo.dayu.model.entity.InvokeDO;
 import lombok.extern.slf4j.Slf4j;
@@ -110,8 +110,8 @@ public class InvokeReportTask {
                 appDayMap.put(CommonConstants.CONSUMER, consumerMap);
             }
 
-            Boolean has_pro = false;
-            Boolean has_consu = false;
+            boolean hasPro = false;
+            boolean hasConsu = false;
             for (InvokeDO invokeDO : invokeDOList) {
                 String invokeType = invokeDO.getAppType();
                 if (invokeType.equals(CommonConstants.PROVIDER)) {
@@ -121,7 +121,7 @@ public class InvokeReportTask {
                 String providerHost = invokeDO.getProviderHost();
                 String providerPort = invokeDO.getProviderPort();
                 Set<String> nameSet = hostService.getAppNameByHost(new HostBO(providerHost, providerPort));
-                if (nameSet.isEmpty() || nameSet.size() > 1) {
+                if (nameSet.size() != 1) {
                     // 有且只有一个
                     continue;
                 }
@@ -133,7 +133,7 @@ public class InvokeReportTask {
                     Integer providerSum = providerMap.get(providerName) == null ? Integer.valueOf(0) : providerMap.get(providerName);
                     providerSum += success;
                     providerMap.put(providerName, providerSum);
-                    has_pro = true;
+                    hasPro = true;
                 }
                 if (applicationName.equals(providerName)) {
                     // app 作为提供者，被消费
@@ -141,17 +141,17 @@ public class InvokeReportTask {
                     Integer consumerSum = consumerMap.get(appName) == null ? Integer.valueOf(0) : consumerMap.get(appName);
                     consumerSum += success;
                     consumerMap.put(appName, consumerSum);
-                    has_consu = true;
+                    hasConsu = true;
                 }
             }
-            if (!has_pro) {
+            if (!hasPro) {
                 appDayMap.remove(CommonConstants.PROVIDER);
             }
-            if (!has_consu) {
+            if (!hasConsu) {
                 appDayMap.remove(CommonConstants.CONSUMER);
             }
 
-            if (has_consu || has_pro) {
+            if (hasConsu || hasPro) {
                 invokeReportManager.saveAppRelationByAppOnDay(applicationName, lastHourDay, appDayMap);
             }
         }
@@ -173,7 +173,7 @@ public class InvokeReportTask {
         for (String applicationName : allApplication) {
             Map<String, Map<String, ?>> saveMap = (Map<String, Map<String, ?>>) invokeReportManager.getConsumerByAppOnHour(applicationName, lastHourDay);
 
-            Boolean is_ok = false;
+            boolean isOk = false;
 
             for (InvokeDO invokeDO : invokeDOList) {
                 String invokeType = invokeDO.getAppType();
@@ -184,14 +184,14 @@ public class InvokeReportTask {
                 String providerHost = invokeDO.getProviderHost();
                 String providerPort = invokeDO.getProviderPort();
                 Set<String> nameSet = hostService.getAppNameByHost(new HostBO(providerHost, providerPort));
-                if (nameSet.isEmpty() || nameSet.size() > 1) {
+                if (nameSet.size() != 1) {
                     // 有且只有一个
                     continue;
                 }
                 String appName = invokeDO.getApplication();
                 String providerName = nameSet.iterator().next();
                 if (applicationName.equals(providerName)) {
-                    is_ok = true;
+                    isOk = true;
                     // app 作为提供者，被消费
                     Integer success = invokeDO.getSuccess();
                     Integer fail = invokeDO.getFailure();
@@ -216,7 +216,7 @@ public class InvokeReportTask {
                 }
             }
 
-            if (is_ok) {
+            if (isOk) {
                 invokeReportManager.saveConsumerByAppOnHour(applicationName, lastHourDay, saveMap);
             }
         }
@@ -238,7 +238,7 @@ public class InvokeReportTask {
                 String consumerApp = mapEntry.getKey();
                 Map<String, ?> hourSumMap = mapEntry.getValue();
 
-                Boolean is_ok = false;
+                boolean isOk = false;
                 Integer success = 0;
                 Integer fail = 0;
                 for (Map.Entry<String, ?> hourEntry : hourSumMap.entrySet()) {
@@ -246,10 +246,10 @@ public class InvokeReportTask {
 
                     success += sumMap.get(MonitorConstants.SUCCESS);
                     fail += sumMap.get(MonitorConstants.FAIL);
-                    is_ok = true;
+                    isOk = true;
                 }
 
-                if (is_ok) {
+                if (isOk) {
                     // 存当日 sourceAPP 被 consumerApp 消费的成功数
                     Map<String, Integer> numberMap = new HashMap<>();
                     numberMap.put(MonitorConstants.SUCCESS, success);

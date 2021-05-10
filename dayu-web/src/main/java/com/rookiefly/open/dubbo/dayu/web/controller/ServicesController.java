@@ -72,7 +72,7 @@ public class ServicesController {
 
             //测试环境url
             Set<String> testUrlSet = new HashSet<>();
-            for (Map.Entry<String, String> entry : MonitorConstants.ecsTestMap.entrySet()) {
+            for (Map.Entry<String, String> entry : MonitorConstants.ECS_TEST_MAP.entrySet()) {
                 testUrlSet.add(entry.getKey());
                 testUrlSet.add(entry.getValue());
             }
@@ -183,7 +183,7 @@ public class ServicesController {
             } else if ("Yesterday".equals(type)) {
                 limit = 1;
             }
-            for (Integer amount = -limit; amount < 0; amount++) {
+            for (int amount = -limit; amount < 0; amount++) {
                 recentDateList.add(TimeUtil.getBeforDateByNumber(date, amount));
             }
         }

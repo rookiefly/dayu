@@ -14,8 +14,6 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,13 +103,7 @@ public class InvokeServiceImpl implements InvokeService {
         }
         //排序,从大到小
         List<Map.Entry<MethodRankBO, Integer>> sortedList = new ArrayList<>(rankMap.entrySet());
-        Collections.sort(sortedList, new Comparator<Map.Entry<MethodRankBO, Integer>>() {
-            @Override
-            public int compare(Map.Entry<MethodRankBO, Integer> o1, Map.Entry<MethodRankBO, Integer> o2) {
-                Integer result = o2.getValue() - o1.getValue();
-                return result;
-            }
-        });
+        sortedList.sort((o1, o2) -> o2.getValue() - o1.getValue());
         int sortedListSize = sortedList.size();
         for (int i = 0; i < sortedListSize; i++) {
             Map.Entry<MethodRankBO, Integer> entry = sortedList.get(i);

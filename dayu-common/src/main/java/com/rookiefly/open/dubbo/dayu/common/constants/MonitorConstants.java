@@ -12,27 +12,29 @@ import java.util.Map;
 public class MonitorConstants {
 
     public static final String OWNER = "owner";
+
     public static final String ORGANICATION = "organization";
 
     public static final String SESSION_USER_NAME = "SESSION_USER_NAME";
 
     public static final String SUCCESS = "success";
+
     public static final String FAIL = "fail";
 
     /**
      * 存所有的----ip：name，例如 10.0.0.1：本地服务器
      */
-    public static final Map<String, String> ecsMap = new HashMap<>();
+    public static final Map<String, String> ECS_MAP = new HashMap<>();
 
     /**
      * 双向map---内网 ip:外网 ip
      */
-    public static final BiMap<String, String> ecsBiMap = HashBiMap.create();
+    public static final BiMap<String, String> ECS_BI_MAP = HashBiMap.create();
 
     /**
      * 测试环境的ip---内网 ip:外网 ip
      */
-    public static final Map<String, String> ecsTestMap = new HashMap<>();
+    public static final Map<String, String> ECS_TEST_MAP = new HashMap<>();
 
     public static void initEcsMap() {
         //todo 自定义初始化上述map。将ip放置在内存中。

@@ -4,10 +4,10 @@ import com.rookiefly.open.dubbo.dayu.biz.service.AppChangeService;
 import com.rookiefly.open.dubbo.dayu.biz.service.ApplicationService;
 import com.rookiefly.open.dubbo.dayu.biz.service.HostService;
 import com.rookiefly.open.dubbo.dayu.biz.service.ServicesService;
-import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
 import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
-import com.rookiefly.open.dubbo.dayu.model.vo.ResultVO;
+import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
 import com.rookiefly.open.dubbo.dayu.model.bo.ApplicationChangeBO;
+import com.rookiefly.open.dubbo.dayu.model.vo.ResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,8 +18,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -100,12 +98,7 @@ public class IndexController {
                 return ResultVO.wrapErrorResult("not have record");
             }
             List<String> dayList = new ArrayList<>(daySet);
-            Collections.sort(dayList, new Comparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    return o2.compareTo(o1);
-                }
-            });
+            dayList.sort((o1, o2) -> o2.compareTo(o1));
             day = dayList.get(0);
             resultMap.put("day", day);
             resultMap.put("daySet", dayList);

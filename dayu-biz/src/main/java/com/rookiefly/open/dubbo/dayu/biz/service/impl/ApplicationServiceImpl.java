@@ -111,13 +111,13 @@ public class ApplicationServiceImpl implements ApplicationService {
         //提供者处理
         //测试环境url
         Set<String> testUrlSet = new HashSet<>();
-        for (Map.Entry<String, String> entry : MonitorConstants.ecsTestMap.entrySet()) {
+        for (Map.Entry<String, String> entry : MonitorConstants.ECS_TEST_MAP.entrySet()) {
             testUrlSet.add(entry.getKey());
             testUrlSet.add(entry.getValue());
         }
         //所有服务器url,除测试环境外
         Set<String> onlineUrlSet = new HashSet<>();
-        for (Map.Entry<String, String> entry : MonitorConstants.ecsMap.entrySet()) {
+        for (Map.Entry<String, String> entry : MonitorConstants.ECS_MAP.entrySet()) {
             String url = entry.getKey();
             if (!testUrlSet.contains(url)) {
                 onlineUrlSet.add(url);

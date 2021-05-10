@@ -16,7 +16,6 @@ public interface ServicesService {
     //service对应的所有消费者 --app
     Map<String, Set<String>> getServiceConsumers();
 
-
     // service名称，service对象
     Map<String, ServiceBO> getServiceBOMap();
 }
