@@ -45,7 +45,7 @@
           type="text/css"/>
 
     <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="${base}/resources/assets/img/ants_32.ico"/>
+    <link rel="shortcut icon" href="${base}/favicon.ico"/>
 
     <style type="text/css">
         @media (max-width: 992px) {
@@ -114,7 +114,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
                             <img alt="" class="img-circle" style="background-color: #86B4DC;"
-                                 src="${base}/resources/assets/img/ants_img.png">
+                                 src="${base}/resources/assets/img/favicon-32x32.png">
                             <span class="username username-hide-on-mobile" id="user_name_show">
                             <#if name = 'null'>
                                 匿名神秘人
