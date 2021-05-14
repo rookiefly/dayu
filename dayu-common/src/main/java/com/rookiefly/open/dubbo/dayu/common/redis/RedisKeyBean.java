@@ -7,7 +7,7 @@ public interface RedisKeyBean {
     /**
      * redis变量key的系统前缀
      */
-    String SYSTEM_PREFIX = "ants_monitor_";
+    String SYSTEM_PREFIX = "dayu_";
 
     String NULL_OBJECT = "None";
 
