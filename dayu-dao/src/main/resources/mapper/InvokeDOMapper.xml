@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.rookiefly.open.dubbo.dayu.dao.mapper.InvokeDOMapper">
     <resultMap id="BaseResultMap" type="com.rookiefly.open.dubbo.dayu.model.entity.InvokeDO">
-        <id column="uu_id" property="uuId"/>
+        <id column="id" property="id"/>
+        <result column="uu_id" property="uuId"/>
         <result column="application" property="application"/>
         <result column="app_type" property="appType"/>
         <result column="service" property="service"/>
@@ -27,17 +28,6 @@
     provider_port, success, failure, elapsed, concurrent, max_elapsed, max_concurrent, 
     invoke_date, invoke_hour, invoke_time
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select
-        <include refid="Base_Column_List"/>
-        from dubbo_invoke
-        where uu_id = #{uuId,jdbcType=VARCHAR}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-        delete
-        from dubbo_invoke
-        where uu_id = #{uuId,jdbcType=VARCHAR}
-    </delete>
     <insert id="insertSelective" parameterType="com.rookiefly.open.dubbo.dayu.model.entity.InvokeDO">
         insert into dubbo_invoke
         <trim prefix="(" suffix=")" suffixOverrides=",">

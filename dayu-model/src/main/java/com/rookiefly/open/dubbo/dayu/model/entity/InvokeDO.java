@@ -7,6 +7,8 @@ import java.util.Date;
 @Data
 public class InvokeDO {
 
+    private Long id;
+
     private String uuId;
 
     private String application;

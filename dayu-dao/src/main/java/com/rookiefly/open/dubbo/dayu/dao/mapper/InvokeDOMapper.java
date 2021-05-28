@@ -9,11 +9,7 @@ import java.util.List;
 @Repository
 public interface InvokeDOMapper {
 
-    int deleteByPrimaryKey(String uuId);
-
     int insertSelective(InvokeDO record);
-
-    InvokeDO selectByPrimaryKey(String uuId);
 
     int updateByPrimaryKeySelective(InvokeDO record);
 
