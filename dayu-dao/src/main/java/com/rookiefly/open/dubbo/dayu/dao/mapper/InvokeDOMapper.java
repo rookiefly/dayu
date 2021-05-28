@@ -11,8 +11,6 @@ public interface InvokeDOMapper {
 
     int insertSelective(InvokeDO record);
 
-    int updateByPrimaryKeySelective(InvokeDO record);
-
     List<InvokeDO> selectByInvokeDO(InvokeDO searchDO);
 
     int deleteByDate(@Param(value = "date") String minDate);

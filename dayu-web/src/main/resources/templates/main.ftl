@@ -160,7 +160,7 @@
                 <li class="gotoIfreame" id="serviceButton">
                     <a href="#" data-url="/monitor/services/main">
                         <i class="icon-calendar"></i>
-                        <span class="title">服务接口管理</span>
+                        <span class="title">服务管理</span>
                     </a>
                 </li>
                 <li class="gotoIfreame" id="hostButton">

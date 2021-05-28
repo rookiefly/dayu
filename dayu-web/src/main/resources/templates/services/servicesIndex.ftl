@@ -157,7 +157,7 @@
                 <div class="col-lg-2 col-md-1"></div>
                 <div class="col-lg-8 col-md-10 col-xs-12">
                     <div class="input-group">
-                        <input type="text" class="form-control" value="" placeholder="服务接口名称" id="search_value">
+                        <input type="text" class="form-control" value="" placeholder="服务名称" id="search_value">
                         <span class="input-group-btn">
                             <button class="btn bg-blue-madison" type="button" id="search_btn">
                                 <i class="icon-magnifier"></i>

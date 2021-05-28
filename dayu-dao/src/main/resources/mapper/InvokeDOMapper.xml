@@ -145,64 +145,6 @@
             now(),
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.rookiefly.open.dubbo.dayu.model.entity.InvokeDO">
-        update dubbo_invoke
-        <set>
-            <if test="application != null">
-                application = #{application,jdbcType=VARCHAR},
-            </if>
-            <if test="appType != null">
-                app_type = #{appType,jdbcType=VARCHAR},
-            </if>
-            <if test="service != null">
-                service = #{service,jdbcType=VARCHAR},
-            </if>
-            <if test="method != null">
-                method = #{method,jdbcType=VARCHAR},
-            </if>
-            <if test="consumerHost != null">
-                consumer_host = #{consumerHost,jdbcType=VARCHAR},
-            </if>
-            <if test="consumerPort != null">
-                consumer_port = #{consumerPort,jdbcType=VARCHAR},
-            </if>
-            <if test="providerHost != null">
-                provider_host = #{providerHost,jdbcType=VARCHAR},
-            </if>
-            <if test="providerPort != null">
-                provider_port = #{providerPort,jdbcType=VARCHAR},
-            </if>
-            <if test="success != null">
-                success = #{success,jdbcType=INTEGER},
-            </if>
-            <if test="failure != null">
-                failure = #{failure,jdbcType=INTEGER},
-            </if>
-            <if test="elapsed != null">
-                elapsed = #{elapsed,jdbcType=INTEGER},
-            </if>
-            <if test="concurrent != null">
-                concurrent = #{concurrent,jdbcType=INTEGER},
-            </if>
-            <if test="maxElapsed != null">
-                max_elapsed = #{maxElapsed,jdbcType=INTEGER},
-            </if>
-            <if test="maxConcurrent != null">
-                max_concurrent = #{maxConcurrent,jdbcType=INTEGER},
-            </if>
-            <if test="invokeDate != null">
-                invoke_date = #{invokeDate,jdbcType=CHAR},
-            </if>
-            <if test="invokeHour != null">
-                invoke_hour = #{invokeHour,jdbcType=CHAR},
-            </if>
-            <if test="invokeTime != null">
-                invoke_time = #{invokeTime,jdbcType=BIGINT},
-            </if>
-        </set>
-        where uu_id = #{uuId,jdbcType=VARCHAR}
-    </update>
-
 
     <select id="selectByInvokeDO" resultMap="BaseResultMap"
             parameterType="com.rookiefly.open.dubbo.dayu.model.entity.InvokeDO">

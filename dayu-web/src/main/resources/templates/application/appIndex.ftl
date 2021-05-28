@@ -231,7 +231,7 @@
                     <div class="input-icon right">
                         <i class="icon-magnifier"></i>
                         <input type="text" class="form-control form-control-solid" id="search_service_value"
-                               placeholder="服务接口名搜索...">
+                               placeholder="服务名搜索...">
                     </div>
                 </div>
             </div>
