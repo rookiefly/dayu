@@ -92,12 +92,12 @@ public class RedisClientTemplateImpl implements RedisClientTemplate {
 
     @Override
     public void setNone(String key) {
-        setStringWithTime(key, RedisKeyBean.NULL_OBJECT, RedisKeyBean.RREDIS_EXP_HOURS);
+        setStringWithTime(key, RedisKeyConstants.NULL_OBJECT, RedisKeyConstants.RREDIS_EXP_HOURS);
     }
 
     @Override
     public boolean isNone(String redisString) {
-        return RedisKeyBean.NULL_OBJECT.equals(redisString);
+        return RedisKeyConstants.NULL_OBJECT.equals(redisString);
     }
 
     /**
@@ -365,7 +365,7 @@ public class RedisClientTemplateImpl implements RedisClientTemplate {
             return result;
         }
         if (expire == null) {
-            expire = RedisKeyBean.RREDIS_EXP_DAY;
+            expire = RedisKeyConstants.RREDIS_EXP_DAY;
         }
         boolean broken = false;
         try {
@@ -498,7 +498,7 @@ public class RedisClientTemplateImpl implements RedisClientTemplate {
             return result;
         }
         if (expire == null) {
-            expire = RedisKeyBean.RREDIS_EXP_DAY;
+            expire = RedisKeyConstants.RREDIS_EXP_DAY;
         }
         boolean broken = false;
         try {

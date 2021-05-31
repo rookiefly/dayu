@@ -37,7 +37,7 @@ public class MonitorConstants {
     public static final Map<String, String> ECS_TEST_MAP = new HashMap<>();
 
     public static void initEcsMap() {
-        //todo 自定义初始化上述map。将ip放置在内存中。
+        //自定义初始化上述map。将ip放置在内存中。
 //        ecsMap.put("10.0.0.1","测试服务器");
 //
 //        ecsBiMap.put("10.0.0.1","192.xxx.x0.xx");

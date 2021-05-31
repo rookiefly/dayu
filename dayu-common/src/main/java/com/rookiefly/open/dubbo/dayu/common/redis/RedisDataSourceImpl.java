@@ -22,8 +22,7 @@ public class RedisDataSourceImpl implements RedisDataSource {
             if (null == shardedJedisPool) {
                 shardedJedisPool = (ShardedJedisPool) SpringContextUtil.getBean("shardedJedisPool");
             }
-            ShardedJedis shardJedis = shardedJedisPool.getResource();
-            return shardJedis;
+            return shardedJedisPool.getResource();
         } catch (Exception e) {
             log.error("getRedisClent error", e);
         }

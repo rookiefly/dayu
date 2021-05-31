@@ -3,7 +3,7 @@ package com.rookiefly.open.dubbo.dayu.biz.service.impl;
 import com.rookiefly.open.dubbo.dayu.biz.service.HostService;
 import com.rookiefly.open.dubbo.dayu.biz.service.InvokeService;
 import com.rookiefly.open.dubbo.dayu.common.redis.RedisClientTemplate;
-import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyBean;
+import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyConstants;
 import com.rookiefly.open.dubbo.dayu.common.tools.JsonUtil;
 import com.rookiefly.open.dubbo.dayu.dao.mapper.InvokeDOMapper;
 import com.rookiefly.open.dubbo.dayu.model.bo.HostBO;
@@ -43,7 +43,7 @@ public class InvokeServiceImpl implements InvokeService {
             return resultList;
         }
 
-        String redisKey = String.format(RedisKeyBean.invokeMethodRankKey, appName);
+        String redisKey = String.format(RedisKeyConstants.INVOKE_METHOD_RANK_KEY, appName);
         String redisResultString = redisClientTemplate.get(redisKey);
         if (redisResultString != null && redisClientTemplate.isNone(redisResultString)) {
             //缓存里判定之前查找为空，因此此次不走数据库，直接空
@@ -59,7 +59,7 @@ public class InvokeServiceImpl implements InvokeService {
         if (resultList.isEmpty()) {
             redisClientTemplate.setNone(redisKey);
         } else {
-            redisClientTemplate.lazySet(redisKey, resultList, RedisKeyBean.RREDIS_EXP_HOURS * 23);
+            redisClientTemplate.lazySet(redisKey, resultList, RedisKeyConstants.RREDIS_EXP_HOURS * 23);
         }
         return resultList;
     }

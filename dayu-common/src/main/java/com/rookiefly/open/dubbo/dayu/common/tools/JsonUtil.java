@@ -71,7 +71,7 @@ public class JsonUtil {
      * collectionClass：集合class 例如 List.class
      * elementClass：元素class 例如 User.class
      */
-    public static JavaType getCollectionType(Class<?> collectionClass, Class<?>... elementClass) throws Exception {
+    public static JavaType getCollectionType(Class<?> collectionClass, Class<?>... elementClass) {
         return objectMapper.getTypeFactory().constructParametricType(collectionClass, elementClass);
     }
 

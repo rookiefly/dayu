@@ -4,7 +4,7 @@ import com.rookiefly.open.dubbo.dayu.biz.service.DubboMonitorService;
 import com.rookiefly.open.dubbo.dayu.biz.service.RegistryContainer;
 import com.rookiefly.open.dubbo.dayu.biz.service.ApplicationService;
 import com.rookiefly.open.dubbo.dayu.common.redis.RedisClientTemplate;
-import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyBean;
+import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyConstants;
 import com.rookiefly.open.dubbo.dayu.common.tools.JsonUtil;
 import com.rookiefly.open.dubbo.dayu.common.tools.NetTools;
 import com.rookiefly.open.dubbo.dayu.common.constants.MonitorConstants;
@@ -69,7 +69,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<String> getAllApplicationsCache() {
         List<String> resultList = new ArrayList<>();
-        String redisKey = RedisKeyBean.APP_LIST_KEY;
+        String redisKey = RedisKeyConstants.APP_LIST_KEY;
         // 从redis中取
         String redisResultString = redisClientTemplate.get(redisKey);
         if (redisResultString != null && redisClientTemplate.isNone(redisResultString)) {
@@ -88,7 +88,7 @@ public class ApplicationServiceImpl implements ApplicationService {
             redisClientTemplate.setNone(redisKey);
         } else {
             resultList = new ArrayList<>(resultSet);
-            redisClientTemplate.lazySet(redisKey, resultList, RedisKeyBean.RREDIS_EXP_HOURS);
+            redisClientTemplate.lazySet(redisKey, resultList, RedisKeyConstants.RREDIS_EXP_HOURS);
         }
 
         return resultList;

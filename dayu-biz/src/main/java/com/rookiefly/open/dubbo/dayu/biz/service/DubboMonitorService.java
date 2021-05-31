@@ -218,10 +218,10 @@ public class DubboMonitorService implements MonitorService {
         //保存其最后被消费时间
         if (hostBO != null) {
             String time = TimeUtil.getTimeString(now);
-            String this_service = statistics.getServiceInterface();
+            String thisService = statistics.getServiceInterface();
             Set<String> serviceSet = hostService.getServiceByHost(hostBO);
             for (String service : serviceSet) {
-                if (service.startsWith(this_service)) {
+                if (service.startsWith(thisService)) {
                     String key = service + hostBO.getHost();
                     SERVICE_FINAL_TIME_MAP.put(key, time);
                     break;

@@ -1,7 +1,7 @@
 package com.rookiefly.open.dubbo.dayu.dao.redis.manager;
 
 import com.rookiefly.open.dubbo.dayu.common.redis.RedisClientTemplate;
-import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyBean;
+import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyConstants;
 import com.rookiefly.open.dubbo.dayu.common.tools.JsonUtil;
 import com.rookiefly.open.dubbo.dayu.dao.mapper.InvokeDOMapper;
 import com.rookiefly.open.dubbo.dayu.model.entity.InvokeDO;
@@ -32,11 +32,11 @@ public class InvokeRedisManager {
      * @param invokeDO
      */
     public void saveInvoke(String hour, InvokeDO invokeDO) {
-        String key = String.format(RedisKeyBean.invokeListHour, hour);
+        String key = String.format(RedisKeyConstants.INVOKE_LIST_HOUR, hour);
         String jsonString = JsonUtil.objectToJsonStr(invokeDO);
 
         // 存储原始记录 2小时
-        redisClientTemplate.rPushList(key, jsonString, RedisKeyBean.RREDIS_EXP_HOURS * 2);
+        redisClientTemplate.rPushList(key, jsonString, RedisKeyConstants.RREDIS_EXP_HOURS * 2);
     }
 
     /**
@@ -47,7 +47,7 @@ public class InvokeRedisManager {
      */
     public List<InvokeDO> getInvokeByHour(String hour) {
         List<InvokeDO> resultList = new ArrayList<>();
-        String key = String.format(RedisKeyBean.invokeListHour, hour);
+        String key = String.format(RedisKeyConstants.INVOKE_LIST_HOUR, hour);
 
         List<String> jsonList = redisClientTemplate.getList(key, 0, -1);
 
@@ -69,7 +69,7 @@ public class InvokeRedisManager {
      * @return
      */
     public List<InvokeDO> getInvokeByMethodDay(String service, String method, String timeDate) {
-        String key = String.format(RedisKeyBean.invokeMethodDayKey, service, method, timeDate);
+        String key = String.format(RedisKeyConstants.INVOKE_METHOD_DAY_KEY, service, method, timeDate);
 
         List<InvokeDO> resultList = new ArrayList<>();
 
@@ -88,7 +88,7 @@ public class InvokeRedisManager {
             if (resultList.isEmpty()) {
                 redisClientTemplate.setNone(key);
             } else {
-                redisClientTemplate.lazySet(key, resultList, RedisKeyBean.RREDIS_EXP_HOURS);
+                redisClientTemplate.lazySet(key, resultList, RedisKeyConstants.RREDIS_EXP_HOURS);
             }
         } else {
             resultList = redisClientTemplate.lazyGetList(key, InvokeDO.class);

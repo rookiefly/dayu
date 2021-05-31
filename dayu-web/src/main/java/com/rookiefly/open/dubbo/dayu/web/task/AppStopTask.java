@@ -95,8 +95,7 @@ public class AppStopTask {
             map.put("server", MonitorConstants.ECS_MAP.get(host));
 
             try {
-//                smsServiceHelp.sendMsg(mobile, MonitorConstants.SMS_STOP_ACTION, map);
-                //todo 发短信或者发邮件等任意提醒操作
+                //发短信或者发邮件等任意提醒操作
                 log.info("发短信给{},内容：{}", mobile, applicationChangeBO.toString());
 
                 nowNum += 1;

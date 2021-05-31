@@ -1,7 +1,7 @@
 package com.rookiefly.open.dubbo.dayu.dao.redis.manager;
 
 import com.rookiefly.open.dubbo.dayu.common.redis.RedisClientTemplate;
-import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyBean;
+import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyConstants;
 import com.rookiefly.open.dubbo.dayu.common.tools.JsonUtil;
 import com.rookiefly.open.dubbo.dayu.model.bo.ApplicationChangeBO;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class AppStopRedisManagerImpl implements AppStopRedisManager {
     @Override
     public Map<ApplicationChangeBO, String> getAllStopApp() {
         Map<ApplicationChangeBO, String> resultMap = new HashMap<>();
-        for (Map.Entry<String, String> entry : redisClientTemplate.getAllHash(RedisKeyBean.appStopMapKey).entrySet()) {
+        for (Map.Entry<String, String> entry : redisClientTemplate.getAllHash(RedisKeyConstants.APP_STOP_MAP_KEY).entrySet()) {
             String key = entry.getKey();
             ApplicationChangeBO applicationChangeBO = JsonUtil.jsonStrToObject(key, ApplicationChangeBO.class);
             resultMap.put(applicationChangeBO, entry.getValue());
@@ -40,7 +40,7 @@ public class AppStopRedisManagerImpl implements AppStopRedisManager {
 
         String filed = JsonUtil.objectToJsonStr(filedBO);
         String value = applicationChangeBO.getTime() + "," + number;
-        redisClientTemplate.setMapKey(RedisKeyBean.appStopMapKey, filed, value);
+        redisClientTemplate.setMapKey(RedisKeyConstants.APP_STOP_MAP_KEY, filed, value);
     }
 
     @Override
@@ -51,6 +51,6 @@ public class AppStopRedisManagerImpl implements AppStopRedisManager {
         filedBO.setPort(applicationChangeBO.getPort());
 
         String filed = JsonUtil.objectToJsonStr(filedBO);
-        redisClientTemplate.delMapKey(RedisKeyBean.appStopMapKey, filed);
+        redisClientTemplate.delMapKey(RedisKeyConstants.APP_STOP_MAP_KEY, filed);
     }
 }

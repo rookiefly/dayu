@@ -124,7 +124,7 @@ public class NetTools {
 
 
     //判断是否是禁止的url
-    public static Boolean compareIsOverride(URL url, Set<URL> forbitUrlSet) {
+    public static boolean compareIsOverride(URL url, Set<URL> forbitUrlSet) {
         if (null == forbitUrlSet || forbitUrlSet.isEmpty()) {
             return false;
         }
@@ -133,7 +133,7 @@ public class NetTools {
         String path = url.getPath();
         String version = url.getParameter(CommonConstants.VERSION_KEY);
 
-        Boolean result = false;
+        boolean result = false;
         for (URL compareUrl : forbitUrlSet) {
             String compareHost = compareUrl.getHost();
             Integer comparePort = compareUrl.getPort();

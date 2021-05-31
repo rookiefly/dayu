@@ -3,7 +3,7 @@ package com.rookiefly.open.dubbo.dayu.common.redis;
 /**
  * redis key 的管理
  */
-public interface RedisKeyBean {
+public interface RedisKeyConstants {
     /**
      * redis变量key的系统前缀
      */
@@ -14,62 +14,62 @@ public interface RedisKeyBean {
     /**
      * list key
      **/
-    String recentInsertKey = SYSTEM_PREFIX + "recent_app_change_insert_list";
-    String recentDeleteKey = SYSTEM_PREFIX + "recent_app_change_delete_list";
+    String RECENT_INSERT_KEY = SYSTEM_PREFIX + "recent_app_change_insert_list";
+    String RECENT_DELETE_KEY = SYSTEM_PREFIX + "recent_app_change_delete_list";
     /**
      * app 的主要变更 纪录 用作对比比较
      **/
-    String appChangeCacheKey = SYSTEM_PREFIX + "app_change_key";
+    String APP_CHANGE_CACHE_KEY = SYSTEM_PREFIX + "app_change_key";
 
     /**
      * app停止后的记录的map{host-app:time+次数}
      */
-    String appStopMapKey = SYSTEM_PREFIX + "app_stop_map";
+    String APP_STOP_MAP_KEY = SYSTEM_PREFIX + "app_stop_map";
 
     /**
      * APP:PHONE
      **/
-    String appPhoneMapKey = SYSTEM_PREFIX + "app_phone_map";
+    String APP_PHONE_MAP_KEY = SYSTEM_PREFIX + "app_phone_map";
 
     /**
      * 该日期的invoke对象，2小时
      */
-    String invokeListHour = SYSTEM_PREFIX + "invoke_list_hour_%s";
+    String INVOKE_LIST_HOUR = SYSTEM_PREFIX + "invoke_list_hour_%s";
 
     /**
      * 查到method日期的数据 service_method_day，1个小时
      */
-    String invokeMethodDayKey = SYSTEM_PREFIX + "invoke_method_%s_%s_%s";
+    String INVOKE_METHOD_DAY_KEY = SYSTEM_PREFIX + "invoke_method_%s_%s_%s";
 
     /**
      * 该应用下的方法排行榜数据 appName,1h
      */
-    String invokeMethodRankKey = SYSTEM_PREFIX + "app_method_rank_%s";
+    String INVOKE_METHOD_RANK_KEY = SYSTEM_PREFIX + "app_method_rank_%s";
 
     /**
      * 按日期存储详细变化,一周
      */
-    String dayChangeKey = SYSTEM_PREFIX + "month_app_change_list_%s";
+    String DAY_CHANGE_KEY = SYSTEM_PREFIX + "month_app_change_list_%s";
 
     /**
      * 存这月多少日期有变化，一周
      */
-    String monthDayKey = SYSTEM_PREFIX + "month_day_app_change_%s";
+    String MONTH_DAY_KEY = SYSTEM_PREFIX + "month_day_app_change_%s";
 
     /**
      * 按日统计app的交互数,15天
      */
-    String appInvokeSumOnDayKEY = SYSTEM_PREFIX + "%s_app_sum_on_day_%s";
+    String APP_INVOKE_SUM_ON_DAY_KEY = SYSTEM_PREFIX + "%s_app_sum_on_day_%s";
 
     /**
      * 按小时统计app消费者的每小时消费情况，2天
      */
-    String appConsumerSumOnHourKEY = SYSTEM_PREFIX + "%s_app_consumer_on_hour_%s";
+    String APP_CONSUMER_SUM_ON_HOUR_KEY = SYSTEM_PREFIX + "%s_app_consumer_on_hour_%s";
 
     /**
      * 按日统计app消费者的每日情况，15天
      */
-    String appConsumerSumOnDayKEY = SYSTEM_PREFIX + "%s_app_consumer_on_day_%s";
+    String APP_CONSUMER_SUM_ON_DAY_KEY = SYSTEM_PREFIX + "%s_app_consumer_on_day_%s";
 
     /**
      * application 名单,一小时
@@ -79,8 +79,8 @@ public interface RedisKeyBean {
     /**
      * 每日用户的ip：name
      **/
-    String userIpNameKey = SYSTEM_PREFIX + "user_ip_name_map_%s";
-    String userIpNameFieldKey = SYSTEM_PREFIX + "field_%s";
+    String USER_IP_NAME_KEY = SYSTEM_PREFIX + "user_ip_name_map_%s";
+    String USER_IP_NAME_FIELD_KEY = SYSTEM_PREFIX + "field_%s";
 
     /**
      * 缓存时效 1分钟

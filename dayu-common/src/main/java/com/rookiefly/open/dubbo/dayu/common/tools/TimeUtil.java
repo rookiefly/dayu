@@ -30,8 +30,7 @@ public class TimeUtil {
         currentDate.add(GregorianCalendar.DATE, mondayPlus);
         Date monday = currentDate.getTime();
         DateFormat df = DateFormat.getDateInstance();
-        String preMonday = df.format(monday);
-        return preMonday;
+        return df.format(monday);
     }
 
     // 获得当前周- 周日  的日期
@@ -41,8 +40,7 @@ public class TimeUtil {
         currentDate.add(GregorianCalendar.DATE, mondayPlus + 6);
         Date monday = currentDate.getTime();
         DateFormat df = DateFormat.getDateInstance();
-        String preMonday = df.format(monday);
-        return preMonday;
+        return df.format(monday);
     }
 
 
@@ -108,22 +106,19 @@ public class TimeUtil {
 
 
     public static String getDateString(Date date) {
-        String str2 = dateFormat.format(date);
-        return str2;
+        return dateFormat.format(date);
     }
 
 
     public static String getTimeString(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String str2 = formatter.format(date);
-        return str2;
+        return formatter.format(date);
     }
 
     public static Date getDateByTimeString(String time) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            Date d1 = formatter.parse(time);
-            return d1;
+            return formatter.parse(time);
         } catch (ParseException e) {
             e.printStackTrace();
             return null;
@@ -132,20 +127,17 @@ public class TimeUtil {
 
     public static String getMinuteString(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-        String str2 = formatter.format(date);
-        return str2;
+        return formatter.format(date);
     }
 
     public static String getHourString(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("HH");
-        String str2 = formatter.format(date);
-        return str2;
+        return formatter.format(date);
     }
 
     public static String getYearMonthString(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM");
-        String str2 = formatter.format(date);
-        return str2;
+        return formatter.format(date);
     }
 
     // time1 > tim2 : true
@@ -153,10 +145,6 @@ public class TimeUtil {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date dt1 = formatter.parse(time1);
         Date dt2 = formatter.parse(time2);
-        if (dt1.getTime() > dt2.getTime()) {
-            return true;
-        }
-
-        return false;
+        return dt1.getTime() > dt2.getTime();
     }
 }

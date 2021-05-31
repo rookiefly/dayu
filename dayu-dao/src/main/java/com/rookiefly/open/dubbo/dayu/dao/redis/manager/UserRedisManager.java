@@ -1,7 +1,7 @@
 package com.rookiefly.open.dubbo.dayu.dao.redis.manager;
 
 import com.rookiefly.open.dubbo.dayu.common.redis.RedisClientTemplate;
-import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyBean;
+import com.rookiefly.open.dubbo.dayu.common.redis.RedisKeyConstants;
 import com.rookiefly.open.dubbo.dayu.common.tools.TimeUtil;
 import org.springframework.stereotype.Service;
 
@@ -15,15 +15,15 @@ public class UserRedisManager {
     private RedisClientTemplate redisClientTemplate;
 
     public void saveUserIpName(String ip, String name) {
-        String mapKey = String.format(RedisKeyBean.userIpNameKey, TimeUtil.getDateString(new Date()));
-        String ipNameField = String.format(RedisKeyBean.userIpNameFieldKey, ip);
+        String mapKey = String.format(RedisKeyConstants.USER_IP_NAME_KEY, TimeUtil.getDateString(new Date()));
+        String ipNameField = String.format(RedisKeyConstants.USER_IP_NAME_FIELD_KEY, ip);
 
         redisClientTemplate.setMapKey(mapKey, ipNameField, name);
     }
 
     public String getUserIPName(String ip) {
-        String mapKey = String.format(RedisKeyBean.userIpNameKey, TimeUtil.getDateString(new Date()));
-        String ipNameField = String.format(RedisKeyBean.userIpNameFieldKey, ip);
+        String mapKey = String.format(RedisKeyConstants.USER_IP_NAME_KEY, TimeUtil.getDateString(new Date()));
+        String ipNameField = String.format(RedisKeyConstants.USER_IP_NAME_FIELD_KEY, ip);
 
         return redisClientTemplate.getMapKey(mapKey, ipNameField);
     }

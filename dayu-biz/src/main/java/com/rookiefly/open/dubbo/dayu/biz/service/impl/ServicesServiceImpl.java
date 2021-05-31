@@ -139,10 +139,8 @@ public class ServicesServiceImpl implements ServicesService {
             for (URL url : urlSet) {
                 //是否被禁止,禁止则不出现
                 Set<URL> forbidSet = forbidServices.get(url.getServiceInterface());
-                if (null != forbidSet && !forbidSet.isEmpty()) {
-                    if (NetTools.compareIsOverride(url, forbidSet)) {
-                        continue;
-                    }
+                if (null != forbidSet && !forbidSet.isEmpty() && NetTools.compareIsOverride(url, forbidSet)) {
+                    continue;
                 }
                 String application = url.getParameter(CommonConstants.APPLICATION_KEY);
                 String organization = url.getParameter(MonitorConstants.ORGANICATION);
@@ -229,14 +227,14 @@ public class ServicesServiceImpl implements ServicesService {
             serviceBO.setMethods(methodSet);
         } else {
             String oldMethods = methodSet.iterator().next();
-            List<String> old_list = Arrays.asList(oldMethods.split(","));
-            List<String> now_list = Arrays.asList(methods.split(","));
-            Boolean isWrong = false;
-            if (old_list.size() != now_list.size()) {
+            List<String> oldList = Arrays.asList(oldMethods.split(","));
+            List<String> nowList = Arrays.asList(methods.split(","));
+            boolean isWrong = false;
+            if (oldList.size() != nowList.size()) {
                 isWrong = true;
             }
-            for (String one_method : now_list) {
-                if (!old_list.contains(one_method)) {
+            for (String oneMethod : nowList) {
+                if (!oldList.contains(oneMethod)) {
                     // 存在不同方法
                     isWrong = true;
                     break;
